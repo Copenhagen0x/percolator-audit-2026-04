@@ -1,0 +1,66 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Kirill Sakharuk (https://github.com/Copenhagen0x)
+
+You are free to:
+  - Share — copy and redistribute the material in any medium or format
+  - Adapt — remix, transform, and build upon the material for any purpose,
+    even commercially.
+
+Under the following terms:
+  - Attribution — You must give appropriate credit, provide a link to the
+    license, and indicate if changes were made. You may do so in any
+    reasonable manner, but not in any way that suggests the licensor
+    endorses you or your use.
+
+  - No additional restrictions — You may not apply legal terms or
+    technological measures that legally restrict others from doing
+    anything the license permits.
+
+Notices:
+  - You do not have to comply with the license for elements of the
+    material in the public domain or where your use is permitted by an
+    applicable exception or limitation.
+  - No warranties are given. The license may not give you all of the
+    permissions necessary for your intended use. For example, other
+    rights such as publicity, privacy, or moral rights may limit how you
+    use the material.
+
+Full legal text:
+  https://creativecommons.org/licenses/by/4.0/legalcode
+
+Human-readable summary:
+  https://creativecommons.org/licenses/by/4.0/
+
+----------------------------------------------------------------------
+SCOPE OF THIS LICENSE WITHIN THIS REPOSITORY
+----------------------------------------------------------------------
+
+This CC BY 4.0 license applies to the *documentation* in this repository:
+  - README.md
+  - DISCLOSURE.md
+  - EXEC_BRIEF.md
+  - METHODOLOGY.md
+  - RAW_KANI_RESULTS.md
+  - RECOMMENDED_PATCH.md
+  - baseline/README.md
+  - tests/engine/README.md (if added)
+  - tests/wrapper/README.md (if added)
+
+The *test code* in tests/engine/ and tests/wrapper/ is intended to be
+contributed back to the upstream repositories under their respective
+licenses:
+  - tests/engine/  -> intended for github.com/aeyakovenko/percolator,
+                      whose Cargo.toml declares license = "Apache-2.0".
+                      The test code in tests/engine/ is therefore made
+                      available under the Apache License, Version 2.0.
+  - tests/wrapper/ -> intended for github.com/aeyakovenko/percolator-prog,
+                      which does not declare a license in Cargo.toml at
+                      sha c447686. The test code in tests/wrapper/ is
+                      made available under the same CC BY 4.0 license as
+                      the documentation until the upstream license is
+                      clarified by the maintainer; the maintainer is
+                      welcome to relicense any of these files under the
+                      upstream's preferred license upon adoption.
+
+Verify upstream licenses before redistributing test code at scale.

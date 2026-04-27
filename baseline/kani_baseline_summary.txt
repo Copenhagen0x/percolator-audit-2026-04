@@ -1,0 +1,82 @@
+================================================================
+Kani baseline re-run summary
+================================================================
+Date:     2026-04-26 (Sunday evening into 2026-04-27 Monday)
+Engine:   aeyakovenko/percolator @ 5940285
+Command:  cargo kani --tests --features test
+Env:      Hetzner VPS (6-core), Ubuntu 22.04, Kani 0.67.0
+          Rust 1.95, nightly-2025-11-21 toolchain
+Walltime: ~3h 53min (start 21:25, end 01:18 local)
+
+================================================================
+Headline result
+================================================================
+
+Toly baseline (305 harnesses):    305 PASS / 0 FAIL  -- ZERO REGRESSIONS
+
+================================================================
+Full breakdown
+================================================================
+
+Total harnesses scanned: 321
+  PASS:                  315
+  FAIL:                  6
+
+  Toly baseline:         305  (305 PASS, 0 FAIL)
+  Our additions:         16   (10 PASS, 6 FAIL)
+
+================================================================
+Why our 16 additions appear in this run
+================================================================
+
+`cargo kani --tests --features test` automatically picks up every file
+in `tests/` matching `proofs_*.rs` with `#[kani::proof]` annotations.
+We dropped 5 new files into the engine's `tests/` directory during the
+audit, contributing 16 additional harnesses to the sweep. The full list
+plus their per-harness verdicts is below.
+
+================================================================
+Our 16 additions — per-harness verdict
+================================================================
+
+PASS (10 SAFE proofs):
+  proof_h2_finalize_preserves_conservation                     -- conservation V=I+C+P+R
+  proof_h3_set_pnl_with_reserve_matured_le_pos                 -- matured <= pos invariant
+  proof_h4_market_slot_advance_requires_real_signal            -- slot-advance gate
+  proof_l2_catchup_partial_preserves_conservation              -- formal proof of G3 closure
+  proof_l2_catchup_complete_advances_to_now_slot               -- formal proof of G3 closure
+  proof_l3a_prepare_resolved_touch_preserves_matured           -- implicit invariant
+  proof_l3b_begin_full_drain_reset_snapshots_correctly         -- implicit invariant
+  proof_l3c_empty_sweep_produces_v_equals_i                    -- implicit invariant
+  proof_l3d_advance_profit_warmup_promotion_preserves_horizon_bounds -- implicit invariant
+  proof_l3e_phantom_dust_bound_respects_side_cap               -- implicit invariant
+
+FAIL (3 EXPECTED CEX harnesses -- failure means they FOUND a bug):
+  proof_h1_cursor_wrap_implies_real_volatility_absorption      -- Bug #1 CEX (correct)
+  proof_h5_cursor_wrap_unlocks_fast_lane                       -- Bug #1 downstream CEX (correct)
+  proof_advance_profit_warmup_does_not_panic                   -- Bug #2 CEX (correct)
+
+FAIL (3 unwind-noise -- documented in METHODOLOGY.md lesson #6):
+  proof_trade_open_raw_g_num_does_not_panic                    -- needs --unwind 10
+  proof_risk_notional_from_eff_q_does_not_panic                -- needs --unwind 10
+  proof_effective_pos_q_does_not_panic                         -- needs --unwind 10
+
+  When run individually with `cargo kani ... --harness <name>` and the
+  appropriate --unwind setting (their #[kani::unwind(10)] annotations
+  ARE in the source files but cargo kani's bulk-run mode doesn't always
+  pick them up consistently), these correctly return CEX -- see
+  DISCLOSURE.md Bug #3 + Sibling B sections for the actual verdicts.
+
+================================================================
+Sanity check math
+================================================================
+Toly baseline harnesses    : 321 - 16 = 305
+Toly PASS                  : 315 - 10 = 305      (matches Toly baseline)
+Toly FAIL                  : 6 - 6   = 0         (matches Toly baseline)
+Our SAFE proofs PASS       : 10                  (h2, h3, h4, l2*, l3*)
+Our CEX harnesses FAIL     : 6                   (h1, h5, warmup-CEX, 3 sibling-CEX)
+================================================================
+
+For per-harness verification times, see kani_baseline_timings.tsv.
+For raw cargo kani output, see kani_baseline_full.log.gz (gzip-compressed,
+8.1 MB compressed / 173 MB uncompressed).

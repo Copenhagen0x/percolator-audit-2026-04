@@ -1,0 +1,26 @@
+# Rust build artifacts (none should land here, but defense-in-depth)
+target/
+Cargo.lock
+*.rlib
+*.rmeta
+*.d
+*.o
+*.dSYM/
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Direnv / env files
+.envrc
+.env
+.env.local
+
+# Local note scratchpads (in case auditor adds drafts in this folder)
+SCRATCH.md
+NOTES.md
