@@ -7,6 +7,8 @@ Independent security audit of the Percolator perpetual DEX (engine + BPF wrapper
 **Wrapper pin**: [`aeyakovenko/percolator-prog`](https://github.com/aeyakovenko/percolator-prog) @ `main` sha `c447686`
 **Auditor**: Kirill Sakharuk ([@Copenhagen0x](https://github.com/Copenhagen0x))
 
+> **Continuous monitoring**: this target is audited 24/7 by [SENTINEL](https://github.com/Copenhagen0x/audit-pipeline-cli) — every upstream commit on the engine or wrapper triggers a multi-agent hunt cycle.
+
 ## TL;DR
 
 | # | Finding | Class |
