@@ -7,9 +7,15 @@ Independent security audit of the Percolator perpetual DEX (engine + BPF wrapper
 **Wrapper pin**: [`aeyakovenko/percolator-prog`](https://github.com/aeyakovenko/percolator-prog) @ `main` sha `c447686`
 **Auditor**: Kirill Sakharuk ([@Copenhagen0x](https://github.com/Copenhagen0x))
 
-> **Continuous monitoring**: this target is audited 24/7 by [SENTINEL](https://github.com/Copenhagen0x/audit-pipeline-cli) — every upstream commit on the engine or wrapper triggers a multi-agent hunt cycle.
+> **Continuous monitoring**: this target is audited 24/7 by [JELLEO](https://github.com/Copenhagen0x/audit-pipeline-cli) — the autonomous immune system for Solana DeFi. Every upstream commit on the engine or wrapper triggers a multi-agent hunt cycle across the four-pillar architecture (counterfactual mainnet detection, cross-protocol bug-class propagation, closed-loop fix bundles, on-chain attestation registry).
 
-## TL;DR
+## Public disclosure record
+
+| ID | Class | Status |
+|---|---|---|
+| **F7** | Residual-conservation / insurance-siphon (self-dealing attack class against the `use_insurance_buffer` helper) | Disclosed at [`aeyakovenko/percolator-prog#39`](https://github.com/aeyakovenko/percolator-prog/pull/39) — closed-without-merge; regression coverage labeled `PR39/F7` and committed to `main` at [`a1afd2e`](https://github.com/aeyakovenko/percolator-prog/commit/a1afd2e). 4/4 wrapper paths verified `insurance_drop = 0`; Kani harness `proof_junior_profit_backing` satisfies 2/2 cover properties. |
+
+## TL;DR (audit findings, April 2026)
 
 | # | Finding | Class |
 |---|---|---|
