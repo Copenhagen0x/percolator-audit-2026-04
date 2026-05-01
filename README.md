@@ -7,7 +7,7 @@ Independent security audit of the Percolator perpetual DEX (engine + BPF wrapper
 **Wrapper pin**: [`aeyakovenko/percolator-prog`](https://github.com/aeyakovenko/percolator-prog) @ `main` sha `c447686`
 **Auditor**: Kirill Sakharuk ([@Copenhagen0x](https://github.com/Copenhagen0x))
 
-> **Continuous monitoring**: this target is audited 24/7 by [JELLEO](https://github.com/Copenhagen0x/audit-pipeline-cli) — the autonomous immune system for Solana DeFi. Every upstream commit on the engine or wrapper triggers a multi-agent hunt cycle across the four-pillar architecture (counterfactual mainnet detection, cross-protocol bug-class propagation, closed-loop fix bundles, on-chain attestation registry).
+> **Continuous monitoring**: this target is audited 24/7 by [JELLEO](https://github.com/Copenhagen0x/audit-pipeline-cli) — the underwriting layer for Solana DeFi (autonomous immune system across four pillars: counterfactual mainnet detection, cross-protocol bug-class propagation, closed-loop fix bundles, on-chain attestation registry). Every upstream commit on the engine or wrapper triggers a multi-agent hunt cycle. The on-chain attestation registry produces a live signal that insurance protocols, partner DeFi protocols, and STRIDE evaluators consume.
 
 ## Public disclosure record
 
